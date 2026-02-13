@@ -388,19 +388,17 @@ function render(){
       <h2>最终锁</h2>
       <p>形容我现在对你的感觉</p>
       <div class="field">
-        <input id="feel" placeholder="请输入" maxlength="6" />
+        <input id="feel" placeholder="请输入你的答案…" maxlength="20" />
         <button class="btn primary" id="submit">解锁</button>
-        <button class="btn ghost" id="quick1">${CONFIG.q4Accepted[0]}</button>
-        <button class="btn ghost" id="quick2">${CONFIG.q4Accepted[1]}</button>
       </div>
       <div class="hint" id="hint"></div>
     `;
     const hint = $("#hint");
-    const accept = CONFIG.q4Accepted.map(normalizeCN);
 
     function tryUnlock(value){
       const v = normalizeCN(value);
-      if(accept.includes(v)){
+
+      if(v.includes("喜欢")){
         showHint(hint, "已验证。", true);
         setTimeout(()=>goto(5), 500);
       }else{
@@ -409,8 +407,6 @@ function render(){
     }
 
     $("#submit").onclick = ()=> tryUnlock($("#feel").value);
-    $("#quick1").onclick = ()=> tryUnlock(CONFIG.q4Accepted[0]);
-    $("#quick2").onclick = ()=> tryUnlock(CONFIG.q4Accepted[1]);
     return;
   }
 
