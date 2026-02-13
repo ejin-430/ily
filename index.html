@@ -9,7 +9,6 @@
       --bg:#ffffff;
       --text:#2b2b2b;
       --muted:#8a8a8a;
-      --card:#fafafa;
       --border:#eaeaea;
       --accent:#f3a8b6; /* 淡粉 */
       --accent-weak:#fde8ee;
@@ -30,10 +29,7 @@
       justify-content:center;
       padding: 20px;
     }
-    .app{
-      width: 100%;
-      max-width: var(--maxw);
-    }
+    .app{ width: 100%; max-width: var(--maxw); }
     .card{
       background: rgba(255,255,255,0.85);
       border: 1px solid var(--border);
@@ -73,34 +69,11 @@
       border-radius: 999px;
       transition: width .35s ease;
     }
-
-    h1{
-      margin: 8px 0 6px;
-      font-size: 22px;
-      letter-spacing: .2px;
-      font-weight: 700;
-    }
-    h2{
-      margin: 0 0 8px;
-      font-size: 18px;
-      font-weight: 650;
-    }
-    p{
-      margin: 0 0 12px;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 14px;
-    }
-
-    .center{
-      text-align:center;
-    }
-    .divider{
-      height:1px;
-      background: var(--border);
-      margin: 14px 0;
-    }
-
+    h1{ margin: 8px 0 6px; font-size: 22px; letter-spacing: .2px; font-weight: 700; }
+    h2{ margin: 0 0 8px; font-size: 18px; font-weight: 650; }
+    p{ margin: 0 0 12px; color: var(--muted); line-height: 1.65; font-size: 14px; }
+    .center{ text-align:center; }
+    .divider{ height:1px; background: var(--border); margin: 14px 0; }
     .btn{
       width:100%;
       border: 1px solid var(--border);
@@ -120,15 +93,7 @@
       color: #fff;
       font-weight: 650;
     }
-    .btn.ghost{
-      background: transparent;
-    }
-    .options{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-top: 10px;
-    }
+    .options{ display:flex; flex-direction:column; gap:10px; margin-top: 10px; }
     .hint{
       margin-top: 12px;
       padding: 10px 12px;
@@ -146,12 +111,7 @@
       background: rgba(253,232,238,.7);
       color: #6b2c39;
     }
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      margin-top: 10px;
-    }
+    .field{ display:flex; flex-direction:column; gap:8px; margin-top: 10px; }
     input{
       width:100%;
       padding: 12px 12px;
@@ -165,13 +125,7 @@
       border-color: rgba(243,168,182,.9);
       box-shadow: 0 0 0 4px rgba(243,168,182,.18);
     }
-
-    .tiny{
-      margin-top: 12px;
-      font-size: 12px;
-      color: #9a9a9a;
-      line-height: 1.5;
-    }
+    .tiny{ margin-top: 12px; font-size: 12px; color: #9a9a9a; line-height: 1.5; }
     .footerline{
       display:flex;
       justify-content:center;
@@ -181,13 +135,7 @@
       color:#a1a1a1;
       font-size: 12px;
     }
-    .dot{
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #cfcfcf;
-      display:inline-block;
-    }
+    .dot{ width: 4px; height: 4px; border-radius: 50%; background: #cfcfcf; display:inline-block; }
   </style>
 </head>
 <body>
@@ -195,9 +143,7 @@
     <div class="card" id="card">
       <div class="topbar">
         <div class="badge" id="badge">封面</div>
-        <div class="progress" aria-label="进度">
-          <div class="bar" id="bar"></div>
-        </div>
+        <div class="progress" aria-label="进度"><div class="bar" id="bar"></div></div>
         <div class="badge" id="step">0/4</div>
       </div>
 
@@ -210,16 +156,10 @@
   </div>
 
 <script>
-/**
- * ✅ 你只需要改这里：每一关的正确答案/选项文字
- * - q1Correct: 纪念日（yyyy-mm-dd）
- * - q2Correct / q3Correct: 选项的 id
- * - q4Accepted: 可接受的两个词（“喜欢/心动”）
- */
 const CONFIG = {
   title: "情人节快乐",
   subtitle: "我们的第一个情人节",
-  q1Correct: "2026-02-05",   // ← 改成你们正式在一起的日期（示例）
+  q1Correct: "2026-02-05",
   q1Options: [
     { id:"a", text:"2026-02-05", value:"2026-02-05" },
     { id:"b", text:"2026-02-08", value:"2026-02-08" },
@@ -230,20 +170,16 @@ const CONFIG = {
     { id:"cute",  text:"可爱" },
     { id:"special",text:"很特别" },
   ],
-  q2Correct: "special", // ← 改成正确选项 id
+  q2Correct: "special",
   q3Options: [
     { id:"chat", text:"一起聊天" },
     { id:"music", text:"一起听歌" },
     { id:"sky", text:"一起看同一片天空" },
   ],
-  q3Correct: "sky", // ← 改成正确选项 id
-  q4Accepted: ["喜欢","心动"], // 二选一都算对
+  q3Correct: "sky",
 };
 
-const state = {
-  step: 0, // 0 cover, 1..4 levels, 5 final
-};
-
+const state = { step: 0 }; // 0 cover, 1..4 levels, 5 final
 const $ = (sel) => document.querySelector(sel);
 const view = $("#view");
 const badge = $("#badge");
@@ -276,10 +212,12 @@ function showHint(el, text, ok=false){
 }
 
 function normalizeCN(s){
-  return (s || "")
-    .trim()
-    .replace(/[，。！？、]/g,"")   // 去掉常见中文标点
-    .replace(/\s+/g,"");
+  return (s || "").trim().replace(/[，。！？、]/g,"").replace(/\s+/g,"");
+}
+
+function goto(step){
+  state.step = step;
+  render();
 }
 
 function render(){
@@ -303,31 +241,30 @@ function render(){
     view.innerHTML = `
       <h2>相遇</h2>
       <p>我们正式在一起的日期是？</p>
-
       <div class="options" id="opts"></div>
       <div class="hint" id="hint"></div>
     `;
+
     const hint = $("#hint");
     const opts = $("#opts");
+
+    function checkQ1(value){
+      if(value === CONFIG.q1Correct){
+        showHint(hint, "恭喜你答对啦，这是我会一直记住的一天。", true);
+        setTimeout(()=>goto(2), 650);
+      }else{
+        showHint(hint, "可以来问我T^T");
+      }
+    }
+
     CONFIG.q1Options.forEach(o=>{
       const b = document.createElement("button");
       b.className = "btn";
       b.textContent = o.text;
-      b.onclick = ()=> checkQ1(o.value, hint);
+      b.onclick = ()=> checkQ1(o.value);
       opts.appendChild(b);
     });
-    $("#checkDate").onclick = ()=>{
-      const v = $("#date").value;
-      checkQ1(v, hint);
-    };
-    function checkQ1(value, hintEl){
-    if(value === CONFIG.q1Correct){
-      showHint(hintEl, "恭喜你答对啦，这是我会一直记住的一天。", true);
-      setTimeout(()=>goto(2), 650);
-    }else{
-      showHint(hintEl, "可以来问我T^T");
-    }
-}
+
     return;
   }
 
@@ -340,6 +277,7 @@ function render(){
     `;
     const hint = $("#hint");
     const opts = $("#opts");
+
     CONFIG.q2Options.forEach(o=>{
       const b = document.createElement("button");
       b.className = "btn";
@@ -360,12 +298,13 @@ function render(){
   if(state.step === 3){
     view.innerHTML = `
       <h2>能猜到吗？</h2>
-      <p>虽然跨国相隔，我最想和你同步做的事是？</p>
+      <p>我最想和你同步做的事是？</p>
       <div class="options" id="opts"></div>
       <div class="hint" id="hint"></div>
     `;
     const hint = $("#hint");
     const opts = $("#opts");
+
     CONFIG.q3Options.forEach(o=>{
       const b = document.createElement("button");
       b.className = "btn";
@@ -392,12 +331,14 @@ function render(){
         <button class="btn primary" id="submit">解锁</button>
       </div>
       <div class="hint" id="hint"></div>
+      <div class="tiny">提示：输入里包含“喜欢”就会解锁。</div>
     `;
+
     const hint = $("#hint");
+    const input = $("#feel");
 
     function tryUnlock(value){
       const v = normalizeCN(value);
-
       if(v.includes("喜欢")){
         showHint(hint, "已验证。", true);
         setTimeout(()=>goto(5), 500);
@@ -406,7 +347,21 @@ function render(){
       }
     }
 
-    $("#submit").onclick = ()=> tryUnlock($("#feel").value);
+    $("#submit").onclick = ()=> tryUnlock(input.value);
+
+    // Optional: press Enter to submit
+    input.addEventListener("keydown", (e)=>{
+      if(e.key === "Enter") tryUnlock(input.value);
+    });
+
+    // Optional: auto unlock while typing
+    input.addEventListener("input", (e)=>{
+      if(normalizeCN(e.target.value).includes("喜欢")){
+        showHint(hint, "已验证。", true);
+        setTimeout(()=>goto(5), 500);
+      }
+    });
+
     return;
   }
 
@@ -417,7 +372,7 @@ function render(){
         <div class="divider"></div>
         <p style="color: var(--text); font-size: 15px; line-height: 1.8; margin-bottom: 12px;">
           很庆幸可以遇到你，和你在一起真的真的很开心，<br/>
-          接下来的一年，我会慢慢了解、喜欢你。
+          接下来的一年，我会慢慢了解、慢慢喜欢你。
         </p>
         <p class="tiny">【访问权限已永久开放：仅对你可见】</p>
         <div class="divider"></div>
@@ -426,11 +381,6 @@ function render(){
     `;
     $("#end").onclick = ()=> goto(0);
   }
-}
-
-function goto(step){
-  state.step = step;
-  render();
 }
 
 render();
