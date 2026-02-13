@@ -284,7 +284,7 @@ function render(){
       b.textContent = o.text;
       b.onclick = ()=> {
         if(o.id === CONFIG.q2Correct){
-          showHint(hint, "原来你也记得这份感觉。", true);
+          showHint(hint, "你也记得!", true);
           setTimeout(()=>goto(3), 650);
         }else{
           showHint(hint, "差一点点！再想想：那天你给我的感觉很特别。");
@@ -331,7 +331,6 @@ function render(){
         <button class="btn primary" id="submit">解锁</button>
       </div>
       <div class="hint" id="hint"></div>
-      <div class="tiny">提示：输入里包含“喜欢”就会解锁。</div>
     `;
 
     const hint = $("#hint");
